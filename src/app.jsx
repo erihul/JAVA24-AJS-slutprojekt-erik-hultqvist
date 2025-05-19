@@ -28,6 +28,19 @@ function App() {
     const inProgressTasks = tasks.filter(task => task.status === 'inprogress');
     const finishedTasks = tasks.filter(task => task.status === 'finished');
 
+    // Format timestamp when reading from DB
+        function formatTimestamp(timestamp) {
+            const date = new Date(timestamp);
+
+            const yy = String(date.getFullYear()).slice(2);
+            const mm = String(date.getMonth() + 1).padStart(2, '0');
+            const dd = String(date.getDate()).padStart(2, '0');
+            const hh = String(date.getHours()).padStart(2, '0');
+            const min = String(date.getMinutes()).padStart(2, '0');
+
+            return `${yy}-${mm}-${dd} ${hh}:${min}`;
+        }
+
     return(
         <div>
             <h1>Scrum Board(under development)</h1>
@@ -35,7 +48,7 @@ function App() {
             <AddTask/>
             <SortFilter/>
             <h2>New</h2>
-            {newTasks.map(({id, task, timestamp, category}) => <NewTask key={id} id={id} task={task} timestamp={timestamp} category={category}/>)}
+            {newTasks.map(({id, task, timestamp, category}) => <NewTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category}/>)}
             {/* <NewTask tasks={newTasks}/> */}
 
             <h2>In Progress</h2>

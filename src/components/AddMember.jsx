@@ -4,21 +4,24 @@ import { membersRef } from "../firebase/config";
 export function AddMember(){
 
     let tempMember = '';
-    let tempRole = '';
+    let tempRole = [];
 
 
     function handleSubmit(event){
         event.preventDefault();
         console.log('Name: ', tempMember, ' Role: ', tempRole)
 
-        if(tempMember) {
+        if(tempMember && tempRole.length > 0) {
             //genererar nytt firebase ID
             const newID = push(membersRef).key;
 
             const newRef = child(membersRef, newID);
 
-            update(newRef, {name: tempMember, category: tempRole});
+            update(newRef, {name: tempMember, role: tempRole});
             event.target.reset();
+            tempRole = [];
+        } else {
+            alert('Please fill in Name and Role')
         }
 
     }
@@ -29,12 +32,41 @@ export function AddMember(){
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Name: </label>
                 <input onChange={ event => tempMember = event.target.value }type="text" id="name" required/>
+                <br />
                 <label htmlFor="role">Role: </label>
-                <select name="" id="role" onChange={ event => tempRole = event.target.value }>
+                <br />
+                <input type="checkbox" id="role" value="UX" onChange={ event => {
+                    if (event.target.checked) {
+                    tempRole.push(event.target.value);
+                    } else {
+                    tempRole = tempRole.filter(role => role !== event.target.value);
+                    }
+                }}
+                /> UX
+                <br />
+                <input type="checkbox" id="role" value="Backend" onChange={ event => {
+                    if (event.target.checked) {
+                    tempRole.push(event.target.value);
+                    } else {
+                    tempRole = tempRole.filter(role => role !== event.target.value);
+                    }
+                }}
+                /> Backend
+                <br />
+                <input type="checkbox" id="role" value="Frontend" onChange={ event => {
+                    if (event.target.checked) {
+                    tempRole.push(event.target.value);
+                    } else {
+                    tempRole = tempRole.filter(role => role !== event.target.value);
+                    }
+                }}
+                /> Frontend
+                <br />
+                {/* <select name="" id="role" defaultValue="UX" onChange={ event => tempRole = event.target.value }>
                     <option value="UX">UX</option>
-                    <option value="frontend">Frontend</option>
-                    <option value="backend">Backend</option>
-                </select>
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                </select> */}
                 <button>Add Team-Member</button>
             </form>
         </div>

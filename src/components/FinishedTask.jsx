@@ -1,14 +1,24 @@
+import { child, remove } from "firebase/database";
+import { assignmentRef } from "../firebase/config";
+
 export function FinishedTask( { id, task, timestamp, category, member} ){
 
 
+
+    function handleClick(event){
+        const taskRef = child(assignmentRef, id);
+        
+        remove(taskRef)
+    }
+
     return(
 
-        <div>
+        <div className="task">
             <p>Task: {task}</p>
             <p>Date added: {timestamp}</p>
             <p>Category: {category}</p>
             <p>Team-Member: {member}</p>
-            <button>Ett sätt att radera den</button>
+            <button onClick={handleClick}>Ett sätt att radera den</button>
         </div>
 
     )
