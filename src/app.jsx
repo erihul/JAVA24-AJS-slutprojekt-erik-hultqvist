@@ -12,6 +12,9 @@ import { onValue } from "firebase/database";
 function App() {
 
     const [tasks, setTasks] = useState([])
+    const [memberFilter, setMemberFilter] = useState('all');
+    const [categoryFilter, setCategoryFilter] = useState('all');
+    const [sort, setSort] = useState('');
 
     useEffect(()=>{
         onValue(assignmentRef, snapshot => {
@@ -24,9 +27,27 @@ function App() {
 
     },[])
 
-    const newTasks = tasks.filter(task => task.status === 'new');
-    const inProgressTasks = tasks.filter(task => task.status === 'inprogress');
-    const finishedTasks = tasks.filter(task => task.status === 'finished');
+    const memberFilteredTasks = tasks.filter(task =>{
+        if(memberFilter === 'all') return true;
+        else return task.member === memberFilter;
+    });
+
+    const categoryFilteredTasks = memberFilteredTasks.filter(task =>{
+        if(categoryFilter === 'all') return true;
+        else return task.category === categoryFilter;
+    })
+
+    const sortedTasks = categoryFilteredTasks.toSorted( (a, b) =>{
+        if(sort === 'ascLetter') return a.task.toLowerCase() > b.task.toLowerCase() ? 1 : -1;
+        if(sort === 'decLetter') return a.task.toLowerCase() > b.task.toLowerCase() ? -1 : 1;
+        if(sort === 'decTime') return a.timestamp < b.timestamp;
+        if(sort === 'ascTime') return b.timestamp < a.timestamp;
+        else return 0;
+    })
+
+    const newTasks = sortedTasks.filter(task => task.status === 'new');
+    const inProgressTasks = sortedTasks.filter(task => task.status === 'inprogress');
+    const finishedTasks = sortedTasks.filter(task => task.status === 'finished');
 
     // Format timestamp when reading from DB
         function formatTimestamp(timestamp) {
@@ -46,17 +67,17 @@ function App() {
             <h1>Scrum Board(under development)</h1>
             <AddMember/>
             <AddTask/>
-            <SortFilter/>
+            <SortFilter setMemberFilter={setMemberFilter} setCategoryFilter={setCategoryFilter} setSort={setSort}/>
             <h2>New</h2>
             {newTasks.map(({id, task, timestamp, category}) => <NewTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category}/>)}
             {/* <NewTask tasks={newTasks}/> */}
 
             <h2>In Progress</h2>
-            {inProgressTasks.map(({id, task, timestamp, category, member}) => <InProgressTask key={id} id={id} task={task} timestamp={timestamp} category={category} member={member}/>)}
+            {inProgressTasks.map(({id, task, timestamp, category, member}) => <InProgressTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category} member={member}/>)}
             {/* <InProgressTask/> */}
 
             <h2>Finished</h2>
-            {finishedTasks.map(({id, task, timestamp, category, member}) => <FinishedTask key={id} id={id} task={task} timestamp={timestamp} category={category} member={member}/>)}
+            {finishedTasks.map(({id, task, timestamp, category, member}) => <FinishedTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category} member={member}/>)}
             {/* <FinishedTask/> */}
         </div>
     )
