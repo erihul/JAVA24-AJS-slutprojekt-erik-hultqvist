@@ -30,44 +30,54 @@ export function AddMember(){
         <div>
             <h2>Add Team-Member</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name: </label>
-                <input onChange={ event => tempMember = event.target.value }type="text" id="name" required/>
-                <br />
-                <label htmlFor="role">Role: </label>
-                <br />
-                <input type="checkbox" id="role" value="UX" onChange={ event => {
-                    if (event.target.checked) {
-                    tempRole.push(event.target.value);
-                    } else {
-                    tempRole = tempRole.filter(role => role !== event.target.value);
-                    }
-                }}
-                /> UX
-                <br />
-                <input type="checkbox" id="role" value="Backend" onChange={ event => {
-                    if (event.target.checked) {
-                    tempRole.push(event.target.value);
-                    } else {
-                    tempRole = tempRole.filter(role => role !== event.target.value);
-                    }
-                }}
-                /> Backend
-                <br />
-                <input type="checkbox" id="role" value="Frontend" onChange={ event => {
-                    if (event.target.checked) {
-                    tempRole.push(event.target.value);
-                    } else {
-                    tempRole = tempRole.filter(role => role !== event.target.value);
-                    }
-                }}
-                /> Frontend
-                <br />
-                {/* <select name="" id="role" defaultValue="UX" onChange={ event => tempRole = event.target.value }>
-                    <option value="UX">UX</option>
-                    <option value="Frontend">Frontend</option>
-                    <option value="Backend">Backend</option>
-                </select> */}
-                <button>Add Team-Member</button>
+                <div className="addTeamForm">
+                    <div>
+                        <label htmlFor="name">Name: </label>
+                        <input onChange={ event => tempMember = event.target.value }type="text" id="name" required/>
+                    
+                        <br />
+                        <label htmlFor="role">Role: </label>
+                        <br />
+                        <input className="checkBox" type="checkbox" id="role" value="UX" onChange={ event => {
+                            if (event.target.checked) {
+                                tempRole.push(event.target.value);
+                            } else {
+                                tempRole = tempRole.filter(role => role !== event.target.value);
+                            }
+                        }}
+                        /> UX
+                        <br />
+                        <input className="checkBox" type="checkbox" id="role" value="Backend" onChange={ event => {
+                            if (event.target.checked) {
+                                tempRole.push(event.target.value);
+                            } else {
+                                tempRole = tempRole.filter(role => role !== event.target.value);
+                            }
+                        }}
+                        /> Backend
+                        <br />
+                        <input className="checkBox" type="checkbox" id="role" value="Frontend" onChange={ event => {
+                            if (event.target.checked) {
+                                tempRole.push(event.target.value);
+                            } else {
+                                tempRole = tempRole.filter(role => role !== event.target.value);
+                            }
+                        }}
+                        /> Frontend
+                        <br />
+                    </div>
+
+                    {/* <select name="" id="role" defaultValue="UX" onChange={ event => tempRole = event.target.value }>
+                        <option value="UX">UX</option>
+                        <option value="Frontend">Frontend</option>
+                        <option value="Backend">Backend</option>
+                        </select> */}
+
+                    <div className="addTeamBtn">
+                        <button>Add<br />Team Member</button>
+                    </div>
+
+                </div>
             </form>
         </div>
         

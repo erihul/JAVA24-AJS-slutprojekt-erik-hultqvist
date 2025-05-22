@@ -13,17 +13,17 @@ export function SortFilter( {setMemberFilter, setCategoryFilter, setSort} ){
     }, [])
 
     return(
-        <div>
+        <div className="sortFilterContainer">
             <div>
                 <h3>Filter by</h3>
                 <label htmlFor="member">Team-Member:</label>
                 <select name="" id="member" onChange={event => setMemberFilter(event.target.value)}>
-                    <option value="all">All</option>
+                    <option value="all">ALL</option>
                     {members.map(member => <option key={member.id} value={member.name}>{member.name}</option>)}
                 </select>
                 <label htmlFor="filterCategory">Category:</label>
                 <select name="" id="filterCategory" onChange={event => setCategoryFilter(event.target.value)}>
-                    <option value="all" >All</option>
+                    <option value="all" >ALL</option>
                     <option value="UX" >UX</option>
                     <option value="Frontend" >Frontend</option>
                     <option value="Backend" >Backend</option>

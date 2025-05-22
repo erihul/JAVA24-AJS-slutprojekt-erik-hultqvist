@@ -12,7 +12,7 @@ export function InProgressTask( { id, task, timestamp, category, member} ){
 
     return(
 
-        <div className="task">
+        <div className={`task ${category.toLowerCase()}`}>
             <p>Task: {task}</p>
             <p>Date added: {timestamp}</p>
             <p>Category: {category}</p>

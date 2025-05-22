@@ -4,16 +4,16 @@ import { assignmentRef } from "../firebase/config";
 export function AddTask(){
 
     let tempTask = '';
-    let tempCategory = 'UX';
+    let tempCategory = '';
 
     function handleSubmit(event){
             event.preventDefault();
             console.log('Task: ', tempTask, ' category: ', tempCategory)
 
-            // const tempTime = serverTimestamp();
+            // const tempTime = new Date().serverTimestamp().toLocaleString;
             // console.log(tempTime);
     
-            if(tempTask) {
+            if(tempTask && tempCategory) {
                 //genererar nytt firebase ID
                 const newID = push(assignmentRef).key;
     
@@ -21,9 +21,8 @@ export function AddTask(){
     
                 update(newRef, {task: tempTask, category: tempCategory, status: 'new', timestamp: serverTimestamp(), member: ''});
                 event.target.reset();
-                tempCategory = 'UX';
+                // tempCategory = 'UX';
             }
-    
         }
         
     return(
@@ -31,15 +30,25 @@ export function AddTask(){
         <div>
             <h2>Add Task</h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="task">Task: </label>
-                <input onChange={ event => tempTask = event.target.value }type="text" id="task" required/>
-                <label htmlFor="category">Category: </label>
-                <select name="" id="category" defaultValue="UX" onChange={ event => tempCategory = event.target.value }>
-                    <option value="UX">UX</option>
-                    <option value="Frontend">Frontend</option>
-                    <option value="Backend">Backend</option>
-                </select>
-                <button>Add Task</button>
+                <div>
+                    <div>
+                        <label htmlFor="task">Task: </label>
+                        <textarea onChange={ event => tempTask = event.target.value } name="" id="task" cols={33} rows={2} required/>
+                    </div>
+                    
+                    {/* <input onChange={ event => tempTask = event.target.value }type="text" id="task" required/> */}
+
+                    <div className="taskCategoryBtn">
+                        <label htmlFor="category">Category: </label>
+                        <select name="" id="category" onChange={ event => tempCategory = event.target.value } required>
+                            <option value="">SELECT CATEGORY</option>
+                            <option value="UX">UX</option>
+                            <option value="Frontend">Frontend</option>
+                            <option value="Backend">Backend</option>
+                        </select>
+                        <button>Add Task</button>
+                    </div>
+                </div>
             </form>
         </div>
 

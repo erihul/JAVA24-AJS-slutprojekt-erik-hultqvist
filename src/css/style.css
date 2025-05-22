@@ -1,4 +1,142 @@
-.task {
+body {
+    background-color: rgb(248, 248, 238);
+    margin: 0;
+}
+h1 {
+    font-family: 'raleway';
+    font-weight:200;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-top: 2.1rem;
+}
+.addContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.addContainer h2 {
+    font-family: 'raleway';
+    font-size: small;
+    font-weight:400;
+    letter-spacing: 3px;
+    text-align: center;
+}
+.addContainer label {
+    font-family: monospace;
+    margin-left: 1rem;
+}
+.addContainer input {
+    border-radius: none !important;
+    outline: none;
+}
+.checkBox {
+    margin-left: 3.7rem;
+}
+.addTeamForm {
+    display: flex;
+    justify-content: space-between;
+}
+.addTeamBtn {
+    /* width: 6rem !important; */
+    margin-left: 1rem;
+    padding: 0 0 2rem 0;
+}
+.addTeamBtn button,.taskCategoryBtn button {
+    padding: 1rem 0.2rem 1rem 0.2rem;
+    border-radius: 2px;
+    cursor: pointer;
+    background-color: lightgoldenrodyellow;
+    border: 1px solid lightblue;
+    font-family: 'raleway';
+    letter-spacing: 1px;
+}
+.addTeamBtn :hover, .taskCategoryBtn button:hover {
+    background-color: rgba(244, 244, 86, 0.647) !important;
+    border: 1px solid rgb(4, 178, 236) !important;
+}
+textarea {
+    position: absolute;
+    outline: none;
+    resize: none;
+    /* width: 200px !important;
+    height: 50px !important; */
+    margin-left: 2rem;
+    /* 
+    left: 5px; 
+  top: 5px;
+  right: 5px; 
+  bottom: 5px; */
+}
+.taskCategoryBtn {
+    margin-top: 3rem;
+}
+.taskCategoryBtn select {
     border: 1px solid grey;
-    margin-bottom: 10px;
+    font-family: "raleway";
+    background-color: lightgoldenrodyellow;
+}
+.taskCategoryBtn select:hover {
+    background-color: aliceblue;
+}
+.taskCategoryBtn select>option {
+    font-family: monospace !important;
+}
+.taskCategoryBtn button {
+    margin-left: 1.6rem;
+}
+.sortFilterContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 4rem 1rem 3rem;
+}
+.sortFilterContainer h3 {
+    display: inline;
+    /* margin-right: 2rem; */
+    font-family: 'raleway';
+    font-weight: 200;
+}
+.sortFilterContainer label {
+    font-family: monospace;
+    margin: 0 1rem 0 1rem;
+    
+}
+.taskContainer {
+    display: flex;
+    margin-top: 1rem;
+}
+.taskContainer h2 {
+    text-align: center;
+    font-family: 'raleway';
+    font-weight: 400;
+    letter-spacing: 3px;
+}
+.taskContainer div {
+    width: 37%;
+    padding: 0 0.5rem 1rem 0.5rem;
+}
+.newContainer {
+    background-color: rgba(173, 216, 230, 0.199);
+}
+.inPContainer {
+    background-color: rgba(255, 160, 122, 0.19);
+}
+.finishedContainer {
+    background-color: rgba(144, 238, 144, 0.247);
+}
+.task {
+    min-width: 90%;
+    border: 1px solid rgba(128, 128, 128, 0.279);
+    margin: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.task.ux {
+  background-color: rgb(247, 173, 69); /* neon purple */
+}
+
+.task.frontend {
+  background-color: rgb(229, 80, 80); /* neon orange */
+}
+
+.task.backend {
+  background-color: rgba(63, 125, 88, 0.671); /* neon green */
 }

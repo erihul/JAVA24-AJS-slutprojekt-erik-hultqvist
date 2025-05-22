@@ -21,9 +21,9 @@ function App() {
             console.log(snapshot.val());
             setTasks(Object.entries(snapshot.val()).map(([id, obj])=> {return{id, ...obj}} ));
         });
-        onValue(membersRef, snapshot => {
-            console.log(snapshot.val());;
-        });
+        // onValue(membersRef, snapshot => {
+        //     console.log(snapshot.val());;
+        // });
 
     },[])
 
@@ -64,21 +64,31 @@ function App() {
 
     return(
         <div>
-            <h1>Scrum Board(under development)</h1>
-            <AddMember/>
-            <AddTask/>
+            <h1>SCRUM BOARD [under development...]</h1>
+            <div className="addContainer">
+                <AddMember/>
+                <AddTask/>
+            </div>
             <SortFilter setMemberFilter={setMemberFilter} setCategoryFilter={setCategoryFilter} setSort={setSort}/>
-            <h2>New</h2>
-            {newTasks.map(({id, task, timestamp, category}) => <NewTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category}/>)}
-            {/* <NewTask tasks={newTasks}/> */}
+            <div className="taskContainer">                
+                <div className="newContainer">
+                    <h2>New</h2>
+                    {newTasks.map(({id, task, timestamp, category}) => <NewTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category}/>)}
+                    {/* <NewTask tasks={newTasks}/> */}
+                </div>
 
-            <h2>In Progress</h2>
-            {inProgressTasks.map(({id, task, timestamp, category, member}) => <InProgressTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category} member={member}/>)}
-            {/* <InProgressTask/> */}
+                <div className="inPContainer">
+                    <h2>In Progress</h2>
+                    {inProgressTasks.map(({id, task, timestamp, category, member}) => <InProgressTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category} member={member}/>)}
+                    {/* <InProgressTask/> */}
+                </div>
 
-            <h2>Finished</h2>
-            {finishedTasks.map(({id, task, timestamp, category, member}) => <FinishedTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category} member={member}/>)}
-            {/* <FinishedTask/> */}
+                <div className="finishedContainer">
+                    <h2>Finished</h2>
+                    {finishedTasks.map(({id, task, timestamp, category, member}) => <FinishedTask key={id} id={id} task={task} timestamp={formatTimestamp(timestamp)} category={category} member={member}/>)}
+                    {/* <FinishedTask/> */}
+                </div>
+            </div>
         </div>
     )
 }

@@ -43,12 +43,12 @@ export function NewTask( { id, task, timestamp, category} ){
 
 
     return(
-        <div className="task">
+        <div className={`task ${category.toLowerCase()}`}>
             <p>Task: {task}</p>
             <p>Date added: {timestamp}</p>
             <p>Category: {category}</p>
             <form action="">
-                <label htmlFor="">Tilldela till en TeamMEMBER</label>
+                <label htmlFor="">Tilldela till en TeamMember</label>
                 <select name="" id="" onChange={handleChange}>
                      {/* {newTasks.map(({id, task, timestamp, category}) => <NewTask key={id} id={id} task={task} timestamp={timestamp} category={category}/>)} */}
                     {members.map(({id, name}) => <option key={id} value={name}>{name}</option>)}
