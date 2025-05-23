@@ -45,7 +45,7 @@ export function AddMember(){
                                 tempRole = tempRole.filter(role => role !== event.target.value);
                             }
                         }}
-                        /> UX
+                        /> UX <div className="uxCircle circle"></div>
                         <br />
                         <input className="checkBox" type="checkbox" id="role" value="Backend" onChange={ event => {
                             if (event.target.checked) {
@@ -54,7 +54,7 @@ export function AddMember(){
                                 tempRole = tempRole.filter(role => role !== event.target.value);
                             }
                         }}
-                        /> Backend
+                        /> Backend <div className="backendCircle circle"></div>
                         <br />
                         <input className="checkBox" type="checkbox" id="role" value="Frontend" onChange={ event => {
                             if (event.target.checked) {
@@ -63,7 +63,7 @@ export function AddMember(){
                                 tempRole = tempRole.filter(role => role !== event.target.value);
                             }
                         }}
-                        /> Frontend
+                        /> Frontend <div className="frontendCircle circle"></div>
                         <br />
                     </div>
 

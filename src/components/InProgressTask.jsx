@@ -13,11 +13,25 @@ export function InProgressTask( { id, task, timestamp, category, member} ){
     return(
 
         <div className={`task ${category.toLowerCase()}`}>
-            <p>Task: {task}</p>
-            <p>Date added: {timestamp}</p>
-            <p>Category: {category}</p>
-            <p>Team-Member: {member}</p>
-            <button onClick={handleClick}>Markera att den är utförd</button>
+            <dl>
+                <div className="task-field">
+                    <dt>Task:</dt>
+                    <dd>{task}</dd>
+                </div>
+                <div className="task-field">
+                    <dt>Date added:</dt>
+                    <dd>{timestamp}</dd>
+                </div>
+                <div className="task-field">
+                    <dt>Category:</dt>
+                    <dd>{category}</dd>
+                </div>
+                <div className="task-field">
+                    <dt>Team-Member:</dt>
+                    <dd>{member}</dd>
+                </div>
+            </dl>
+            <button onClick={handleClick}>Accomplished</button>
         </div>
 
     )
