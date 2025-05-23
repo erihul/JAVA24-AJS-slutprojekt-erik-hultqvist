@@ -46,7 +46,11 @@ export function AddTask(){
                             <option value="Frontend">Frontend</option>
                             <option value="Backend">Backend</option>
                         </select>
-                        <button>Add Task</button>
+                        <div className="box-2">
+                            <button className="btn btn-one">
+                                <span>ADD TASK</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </form>

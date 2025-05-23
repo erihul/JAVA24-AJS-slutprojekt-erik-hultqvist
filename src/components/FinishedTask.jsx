@@ -15,7 +15,7 @@ export function FinishedTask( { id, task, timestamp, category, member} ){
 
         <div className={`task ${category.toLowerCase()}`}>
             <dl>
-                <div className="task-field">
+                <div className="task-field tfTask">
                     <dt>Task:</dt>
                     <dd>{task}</dd>
                 </div>

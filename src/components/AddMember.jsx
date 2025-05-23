@@ -9,7 +9,7 @@ export function AddMember(){
 
     function handleSubmit(event){
         event.preventDefault();
-        console.log('Name: ', tempMember, ' Role: ', tempRole)
+        // console.log('Name: ', tempMember, ' Role: ', tempRole)
 
         if(tempMember && tempRole.length > 0) {
             //genererar nytt firebase ID
@@ -66,17 +66,11 @@ export function AddMember(){
                         /> Frontend <div className="frontendCircle circle"></div>
                         <br />
                     </div>
-
-                    {/* <select name="" id="role" defaultValue="UX" onChange={ event => tempRole = event.target.value }>
-                        <option value="UX">UX</option>
-                        <option value="Frontend">Frontend</option>
-                        <option value="Backend">Backend</option>
-                        </select> */}
-
-                    <div className="addTeamBtn">
-                        <button>Add<br />Team Member</button>
+                    <div className="box-1">
+                        <button className="btn btn-one">
+                            <span>ADD TEAM-MEMBER</span>
+                        </button>
                     </div>
-
                 </div>
             </form>
         </div>

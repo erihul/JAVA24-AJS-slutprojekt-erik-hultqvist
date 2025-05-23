@@ -48,7 +48,6 @@ function App() {
     const newTasks = sortedTasks.filter(task => task.status === 'new');
     const inProgressTasks = sortedTasks.filter(task => task.status === 'inprogress');
     const finishedTasks = sortedTasks.filter(task => task.status === 'finished');
-    console.log('finishedtasks: ', finishedTasks);
 
     // Format timestamp when reading from DB
         function formatTimestamp(timestamp) {
