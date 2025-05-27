@@ -1,3 +1,7 @@
+// NewTask.jsx
+// Displays the tasks with status "new" and allows the user to assign it to a team member. When a member is selected from the dropdown,
+// the task is updated in Firebase with the chosen member and its status is changed to "inprogress".
+
 import { child, onValue, update } from "firebase/database";
 import { useEffect, useState } from "react";
 import { assignmentRef, membersRef } from "../firebase/config";
@@ -6,42 +10,28 @@ export function NewTask( { id, task, timestamp, category} ){
     
     const [members, setMembers] = useState([]);
 
-    // useEffect(()=>{
-    //         onValue(assignmentRef, snapshot => {
-    //             console.log(snapshot.val());
-    //             setTasks(Object.entries(snapshot.val()).map(([id, obj])=> {return{id, ...obj}} ));
-    //         });
-    //         onValue(membersRef, snapshot => {
-    //             console.log(snapshot.val());
-    //             setMembers(Object.entries(snapshot.val()).map(([id, obj])=> {return{id, ...obj}} ));
-    //         });
-    
-    //     },[])
-
     //  set member to the useState that corresponds to the actual tasks category
-        useEffect(() => {
+    useEffect(() => {
         onValue(membersRef, snapshot => {
             const data = snapshot.val();
             if (data) {
-            const filteredMembers = Object.entries(data)
+                const filteredMembers = Object.entries(data)
                 .map(([id, obj]) => ({ id, ...obj }))
                 .filter(member => Array.isArray(member.role) && member.role.includes(category));
-
-            console.log("Filtered members:", filteredMembers);
-            setMembers(filteredMembers);
+                setMembers(filteredMembers);
             }
         });
-        }, [category]);
-
-        // Add a team-member to an existing "new task"
-        function handleChange(event){
-            const selectedMember = event.target.value;
-            const taskRef = child(assignmentRef, id);
-
-            update(taskRef, { member: selectedMember, status: 'inprogress' })
-        }
-
-
+    }, [category]);
+    
+    // Add a team-member to an existing "new task"
+    function handleChange(event){
+        const selectedMember = event.target.value;
+        const taskRef = child(assignmentRef, id);
+        
+        update(taskRef, { member: selectedMember, status: 'inprogress' })
+    }
+    
+    
     return(
         <div className={`task ${category.toLowerCase()}`}>
             <dl>
@@ -67,6 +57,17 @@ export function NewTask( { id, task, timestamp, category} ){
                 </select>
             </form>
         </div>
-    )
-
+    ) 
 }
+
+// useEffect(()=>{
+//         onValue(assignmentRef, snapshot => {
+//             console.log(snapshot.val());
+//             setTasks(Object.entries(snapshot.val()).map(([id, obj])=> {return{id, ...obj}} ));
+//         });
+//         onValue(membersRef, snapshot => {
+//             console.log(snapshot.val());
+//             setMembers(Object.entries(snapshot.val()).map(([id, obj])=> {return{id, ...obj}} ));
+//         });
+
+//     },[])

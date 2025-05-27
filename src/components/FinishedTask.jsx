@@ -1,9 +1,11 @@
+// FinishedTask.jsx
+// Displays the details of the tasks marked as "finished". It includes a "Delete" button that, when clicked,
+// removes the task from the Firebase.
+
 import { child, remove } from "firebase/database";
 import { assignmentRef } from "../firebase/config";
 
 export function FinishedTask( { id, task, timestamp, category, member} ){
-
-
 
     function handleClick(event){
         const taskRef = child(assignmentRef, id);

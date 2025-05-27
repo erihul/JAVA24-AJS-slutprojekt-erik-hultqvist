@@ -1,3 +1,7 @@
+// InProgressTask.jsx
+// Displays the tasks currently marked as "inprogress", with a button: "Accomplished". When clicked  the task's status is updated to "finished"
+// in Firebase.
+
 import { child, update } from "firebase/database";
 import { assignmentRef } from "../firebase/config";
 
@@ -7,7 +11,7 @@ export function InProgressTask( { id, task, timestamp, category, member} ){
     function handleClick(event){
         const taskRef = child(assignmentRef, id);
         
-                    update(taskRef, { status: 'finished' })
+        update(taskRef, { status: 'finished' })
     }
 
     return(
@@ -33,7 +37,5 @@ export function InProgressTask( { id, task, timestamp, category, member} ){
             </dl>
             <button onClick={handleClick}>Accomplished</button>
         </div>
-
     )
-
 }

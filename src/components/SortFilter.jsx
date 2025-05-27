@@ -1,3 +1,6 @@
+// SortFilter.jsx
+// Renders dropdown menus to filter tasks by team member and category, and to sort tasks by time or name.
+
 import { useEffect, useState } from "react";
 import { membersRef } from "../firebase/config"
 import { onValue } from "firebase/database";
@@ -5,7 +8,7 @@ import { onValue } from "firebase/database";
 export function SortFilter( {setMemberFilter, setCategoryFilter, setSort} ){
 
     const [members, setMembers] = useState([])
-
+    // Get member objects (on mount and realtime listener) from firebase database and sets it in member useState.
     useEffect(()=>{
     onValue(membersRef, snapshot => {
         setMembers(Object.entries(snapshot.val()).map(([id, obj])=> {return{id, ...obj}} ));

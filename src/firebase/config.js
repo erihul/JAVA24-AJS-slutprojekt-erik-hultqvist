@@ -1,8 +1,8 @@
-// Import the functions you need from the SDKs you need
+// config.js
+// Sets up a connetcion to the firebase realtime database
+
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref } from "firebase/database";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {

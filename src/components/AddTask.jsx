@@ -1,3 +1,8 @@
+// AddTask.jsx
+// Renders a form that collects the task and category (UX, Backend, Frontend).
+// When the form is submitted, it generates a unique Firebase ID and saves the task, selected category, 
+// default status (new), current server timestamp, and empty member field to the Firebase Realtime Database. 
+ 
 import { child, push, serverTimestamp, update } from "firebase/database";
 import { assignmentRef } from "../firebase/config";
 
@@ -9,35 +14,25 @@ export function AddTask(){
     function handleSubmit(event){
             event.preventDefault();
             console.log('Task: ', tempTask, ' category: ', tempCategory)
-
-            // const tempTime = new Date().serverTimestamp().toLocaleString;
-            // console.log(tempTime);
     
             if(tempTask && tempCategory) {
-                //genererar nytt firebase ID
+                // Generate new firebase-ID
                 const newID = push(assignmentRef).key;
-    
                 const newRef = child(assignmentRef, newID);
-    
                 update(newRef, {task: tempTask, category: tempCategory, status: 'new', timestamp: serverTimestamp(), member: ''});
                 event.target.reset();
-                // tempCategory = 'UX';
             }
         }
-        
+     
     return(
-
         <div>
             <h2>Add Task</h2>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="addTaskForm">
                     <div>
                         <label htmlFor="task">Task: </label>
                         <textarea onChange={ event => tempTask = event.target.value } name="" id="task" cols={33} rows={2} required/>
                     </div>
-                    
-                    {/* <input onChange={ event => tempTask = event.target.value }type="text" id="task" required/> */}
-
                     <div className="taskCategoryBtn">
                         <label htmlFor="category">Category: </label>
                         <select name="" id="category" onChange={ event => tempCategory = event.target.value } required>

@@ -1,3 +1,7 @@
+// AddMember.jsx
+// Renders a form that collects a member's name and selected roles (UX, Backend, Frontend), and when submitted, 
+// generates a unique ID and updates the Firebase Realtime Database with the member's data.
+
 import { child, push, update } from "firebase/database";
 import { membersRef } from "../firebase/config";
 
@@ -6,24 +10,18 @@ export function AddMember(){
     let tempMember = '';
     let tempRole = [];
 
-
     function handleSubmit(event){
         event.preventDefault();
-        // console.log('Name: ', tempMember, ' Role: ', tempRole)
-
         if(tempMember && tempRole.length > 0) {
-            //genererar nytt firebase ID
+            //Generate new firebase-ID
             const newID = push(membersRef).key;
-
             const newRef = child(membersRef, newID);
-
             update(newRef, {name: tempMember, role: tempRole});
             event.target.reset();
             tempRole = [];
         } else {
             alert('Please fill in Name and Role')
         }
-
     }
 
     return(

@@ -36,6 +36,9 @@ h1 {
 .addTeamForm {
     display: flex;
     justify-content: space-between;
+    background-color: rgba(249, 249, 197, 0.664);
+    border-radius: 10px;
+    padding: 5px;
 }
 .box-1 { 
     background-color: #ad66ff;
@@ -61,8 +64,6 @@ h1 {
     text-align: center;
     width: 150px;
     cursor: pointer;
-
-    /* Remove native button styles */
     background: none;
     border: none;
     outline: none;
@@ -124,8 +125,6 @@ h1 {
     opacity: 0; 
     transform: scale(0.1, 1);
 }
-
-/* ------------------------------------------ */
 .circle {
     display: inline-flex;
     position: absolute;
@@ -144,6 +143,11 @@ h1 {
 }
 .frontendCircle {
     background-color: rgb(229, 80, 80);
+}
+.addTaskForm {
+    background-color: rgba(249, 249, 197, 0.664);
+    border-radius: 10px;
+    padding: 5px;
 }
 textarea {
     position: absolute;
@@ -165,9 +169,6 @@ textarea {
 .taskCategoryBtn select>option {
     font-family: monospace !important;
 }
-/* .taskCategoryBtn button {
-    margin-left: 1.6rem;
-} */
 .sortFilterContainer {
     display: flex;
     justify-content: space-between;
@@ -175,14 +176,12 @@ textarea {
 }
 .sortFilterContainer h3 {
     display: inline;
-    /* margin-right: 2rem; */
     font-family: 'raleway';
     font-weight: 200;
 }
 .sortFilterContainer label {
     font-family: monospace;
     margin: 0 1rem 0 1rem;
-    
 }
 .taskContainer {
     display: flex;
@@ -196,19 +195,23 @@ textarea {
     letter-spacing: 3px;
 }
 .taskContainer div {
-    /* width: 30vw; */
     padding: 0 0.5rem 1rem 0.5rem;
 }
 .newContainer {
     background-color: rgba(173, 216, 230, 0.199);
     margin-right: 2rem;
+    margin-bottom: 1rem;
 }
 .inPContainer {
     background-color: rgba(255, 160, 122, 0.19);
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+
 }
 .finishedContainer {
     background-color: rgba(144, 238, 144, 0.247);
-    margin-left: 2rem;
+    margin-bottom: 1rem;
+
 }
 .task {
     min-width: 25vw;
