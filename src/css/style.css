@@ -206,12 +206,10 @@ textarea {
     background-color: rgba(255, 160, 122, 0.19);
     margin-right: 2rem;
     margin-bottom: 1rem;
-
 }
 .finishedContainer {
     background-color: rgba(144, 238, 144, 0.247);
     margin-bottom: 1rem;
-
 }
 .task {
     min-width: 25vw;

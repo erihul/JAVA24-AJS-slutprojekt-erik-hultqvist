@@ -47,7 +47,6 @@ function App() {
     const newTasks = sortedTasks.filter(task => task.status === 'new');
     const inProgressTasks = sortedTasks.filter(task => task.status === 'inprogress');
     const finishedTasks = sortedTasks.filter(task => task.status === 'finished');
-
     // Format timestamp  when reading from DB. Since using Firebase/database serverTimestamp().
         function formatTimestamp(timestamp) {
             const date = new Date(timestamp);

@@ -59,15 +59,3 @@ export function NewTask( { id, task, timestamp, category} ){
         </div>
     ) 
 }
-
-// useEffect(()=>{
-//         onValue(assignmentRef, snapshot => {
-//             console.log(snapshot.val());
-//             setTasks(Object.entries(snapshot.val()).map(([id, obj])=> {return{id, ...obj}} ));
-//         });
-//         onValue(membersRef, snapshot => {
-//             console.log(snapshot.val());
-//             setMembers(Object.entries(snapshot.val()).map(([id, obj])=> {return{id, ...obj}} ));
-//         });
-
-//     },[])

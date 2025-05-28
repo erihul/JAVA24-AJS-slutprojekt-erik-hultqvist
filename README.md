@@ -72,10 +72,6 @@ Sets up a connetcion to the firebase realtime database
 
 ## 3. Links
 
-<!-- webpage: https://erihul.github.io/java24-js-slutprojekt-erik-hultqvist/ -->
+webpage: https://erihul.github.io/JAVA24-AJS-slutprojekt-erik-hultqvist/
 
 github: https://github.com/erihul/JAVA24-AJS-slutprojekt-erik-hultqvist
-
-
-
-
