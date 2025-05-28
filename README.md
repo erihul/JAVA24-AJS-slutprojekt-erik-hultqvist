@@ -68,7 +68,7 @@ Displays the details of the tasks marked as "finished". It includes a "Delete" b
 ### Firebase
 
 #### __*config.js*__
-Sets up a connetcion to the firebase realtime database
+Sets up a connection to the firebase realtime database.
 
 ## 3. Links
 
